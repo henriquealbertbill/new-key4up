@@ -14,10 +14,14 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const variants = {
-    primary: "bg-black text-white hover:bg-gray-800",
-    secondary: "bg-white text-black border border-gray-200 hover:bg-gray-50",
-    outline: "border border-black text-black hover:bg-black hover:text-white",
-    ghost: "text-black hover:bg-gray-100",
+    primary:
+      "bg-black text-white hover:bg-gray-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white",
+    secondary:
+      "border border-gray-200 bg-card text-foreground hover:bg-figma-gallery dark:border-card-border dark:hover:bg-card-border",
+    outline:
+      "border border-black text-black hover:bg-black hover:text-white dark:border-foreground dark:text-foreground dark:hover:bg-foreground dark:hover:text-background",
+    ghost:
+      "text-foreground hover:bg-figma-gallery dark:hover:bg-card-border",
   };
 
   const sizes = {

@@ -41,22 +41,22 @@ export default function FAQ() {
 
           <div className="flex flex-col">
             {faqs.map((faq, i) => (
-              <div key={i} className="border-b border-gray-100">
+              <div key={i} className="border-b border-gray-100 dark:border-card-border">
                 <button
                   onClick={() => setOpen(open === i ? null : i)}
-                  className="w-full flex items-center justify-between py-5 text-left gap-4 hover:text-gray-600 transition-colors"
+                  className="flex w-full items-center justify-between gap-4 py-5 text-left transition-colors hover:text-gray-600 dark:hover:text-figma-muted"
                 >
                   <div className="flex items-start gap-4">
-                    <span className="text-xs font-mono text-gray-300 pt-0.5 shrink-0">
+                    <span className="shrink-0 pt-0.5 font-mono text-xs text-gray-300 dark:text-figma-border">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="font-semibold text-gray-900 text-base">{faq.q}</span>
+                    <span className="text-base font-semibold text-gray-900 dark:text-foreground">{faq.q}</span>
                   </div>
                   <div className="shrink-0">
                     {open === i ? (
-                      <Minus className="w-4 h-4 text-gray-400" />
+                      <Minus className="h-4 w-4 text-gray-400 dark:text-figma-gray" />
                     ) : (
-                      <Plus className="w-4 h-4 text-gray-400" />
+                      <Plus className="h-4 w-4 text-gray-400 dark:text-figma-gray" />
                     )}
                   </div>
                 </button>
@@ -70,7 +70,7 @@ export default function FAQ() {
                       transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                       className="overflow-hidden"
                     >
-                      <p className="pl-10 pb-5 text-gray-500 text-sm leading-relaxed">{faq.a}</p>
+                      <p className="pb-5 pl-10 text-sm leading-relaxed text-gray-500 dark:text-figma-muted">{faq.a}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -87,14 +87,14 @@ export default function FAQ() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="lg:col-span-2 flex flex-col justify-center"
         >
-          <div className="bg-white rounded-3xl border border-gray-200 shadow-lg p-8 flex flex-col items-center text-center gap-5">
+          <div className="flex flex-col items-center gap-5 rounded-3xl border border-gray-200 bg-card p-8 text-center shadow-lg dark:border-card-border">
             <div className="w-16 h-16 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center text-white font-black text-2xl">
               B
             </div>
 
             <div>
-              <h3 className="font-bold text-gray-900 text-xl mb-2">Ainda com dúvidas?</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">
+              <h3 className="mb-2 text-xl font-bold text-gray-900 dark:text-foreground">Ainda com dúvidas?</h3>
+              <p className="text-sm leading-relaxed text-gray-500 dark:text-figma-muted">
                 Agenda uma call de descoberta gratuita de 30 minutos. Fica a saber como trabalho e
                 como posso ajudar o teu negócio.
               </p>
@@ -107,7 +107,7 @@ export default function FAQ() {
               Agendar agora 📅
             </a>
 
-            <p className="text-xs text-gray-400">Sem compromissos. 100% gratuita.</p>
+            <p className="text-xs text-gray-400 dark:text-figma-gray">Sem compromissos. 100% gratuita.</p>
           </div>
         </motion.div>
       </div>

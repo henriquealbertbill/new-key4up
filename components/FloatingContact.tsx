@@ -20,16 +20,16 @@ export default function FloatingContact() {
           >
             <a
               href="mailto:geral@key4up.com"
-              className="flex items-center gap-3 bg-white/90 backdrop-blur-md text-gray-900 rounded-full px-4 py-2.5 text-sm font-medium shadow-lg border border-gray-200 hover:bg-white transition-colors"
+              className="flex items-center gap-3 rounded-full border border-gray-200 bg-white/90 px-4 py-2.5 text-sm font-medium text-gray-900 shadow-lg backdrop-blur-md transition-colors hover:bg-white dark:border-card-border dark:bg-card/90 dark:text-foreground dark:hover:bg-card"
             >
-              <Mail className="w-4 h-4 text-gray-600" />
+              <Mail className="h-4 w-4 text-gray-600 dark:text-figma-muted" />
               Enviar email
             </a>
             <a
               href="#"
-              className="flex items-center gap-3 bg-white/90 backdrop-blur-md text-gray-900 rounded-full px-4 py-2.5 text-sm font-medium shadow-lg border border-gray-200 hover:bg-white transition-colors"
+              className="flex items-center gap-3 rounded-full border border-gray-200 bg-white/90 px-4 py-2.5 text-sm font-medium text-gray-900 shadow-lg backdrop-blur-md transition-colors hover:bg-white dark:border-card-border dark:bg-card/90 dark:text-foreground dark:hover:bg-card"
             >
-              <Calendar className="w-4 h-4 text-gray-600" />
+              <Calendar className="h-4 w-4 text-gray-600 dark:text-figma-muted" />
               Agendar uma call
             </a>
           </motion.div>
@@ -40,7 +40,7 @@ export default function FloatingContact() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setOpen(!open)}
-        className="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center shadow-lg hover:bg-gray-800 transition-colors"
+        className="flex h-14 w-14 items-center justify-center rounded-full bg-black text-white shadow-lg transition-colors hover:bg-gray-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white"
         aria-label="Contacto"
       >
         <AnimatePresence mode="wait" initial={false}>

@@ -1,18 +1,130 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   --font-inter: var(--font-inter);
-  --color-background: #fafafa;
-  --color-figma-gray: #828282;
-  --color-figma-muted: #545454;
+  --font-nunito: var(--font-nunito);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-figma-gray: var(--figma-gray);
+  --color-figma-muted: var(--figma-muted);
   --color-figma-green: #12b33f;
-  --color-figma-border: #dedede;
-  --color-figma-gallery: #f0f0f0;
+  --color-figma-border: var(--figma-border);
+  --color-figma-gallery: var(--figma-gallery);
+  --color-card-border: var(--card-border);
+  /** Amarelo dourado do logótipo Co.Labore (o “o”) */
+  --color-colabore-o: var(--colabore-o);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
 }
 
 :root {
+  color-scheme: light;
   --background: #fafafa;
   --foreground: #0a0d12;
+  --colabore-o: #e9bc00;
+  --muted-foreground: #545454;
+  --card: #ffffff;
+  --card-border: #f0f0f0;
+  --card-foreground: #0a0d12;
+  --figma-gray: #828282;
+  --figma-muted: #545454;
+  --figma-border: #dedede;
+  --figma-gallery: #f0f0f0;
+  /** shadcn-style tokens (calendar scheduler, /components/ui) */
+  --radius: 0.5rem;
+  --border: var(--figma-border);
+  --input: var(--figma-border);
+  --ring: var(--figma-muted);
+  --primary: var(--foreground);
+  --primary-foreground: var(--background);
+  --secondary: var(--figma-gallery);
+  --secondary-foreground: var(--foreground);
+  --muted: var(--figma-gallery);
+  --accent: var(--figma-gallery);
+  --accent-foreground: var(--foreground);
+  --destructive: #dc2626;
+  --destructive-foreground: #fafafa;
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+  /** Metade da largura máxima da “méis” — linhas verticais fixas alinhadas ao centro */
+  --page-frame-max-width: 1200px;
+}
+
+.dark {
+  color-scheme: dark;
+  --background: #090b10;
+  --foreground: #e8eaed;
+  /** Mantém o amarelo vibrante no tema escuro */
+  --colabore-o: #f0c814;
+  --muted-foreground: #9aa0a8;
+  --card: #12151c;
+  --card-border: #252a33;
+  --card-foreground: #e8eaed;
+  --figma-gray: #8b9199;
+  --figma-muted: #9aa0a8;
+  --figma-border: #2a3038;
+  --figma-gallery: #1a1f28;
+  --border: var(--figma-border);
+  --input: var(--figma-border);
+  --ring: #9aa0a8;
+  --primary: #e8eaed;
+  --primary-foreground: #090b10;
+  --secondary: #1a1f28;
+  --secondary-foreground: #e8eaed;
+  --muted: #1a1f28;
+  --accent: #1a1f28;
+  --accent-foreground: #e8eaed;
+  --destructive: #f87171;
+  --destructive-foreground: #090b10;
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+}
+
+.rdp-root {
+  --rdp-accent-color: var(--primary);
+  --rdp-accent-background-color: var(--accent);
+}
+
+/**
+ * Linhas laterais estilo grelha editorial (referência Joseph Alexander).
+ * Fixas para atravessar todo o viewport; em ecrãs estreitos colam às bordas.
+ */
+.page-frame-rail {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 45;
+  width: 1px;
+  background-color: var(--figma-border);
+}
+
+.page-frame-rail--left {
+  left: max(0px, calc(50vw - var(--page-frame-max-width) / 2));
+}
+
+.page-frame-rail--right {
+  right: max(0px, calc(50vw - var(--page-frame-max-width) / 2));
 }
 
 html {
@@ -47,8 +159,48 @@ body {
   animation: float 4s ease-in-out infinite;
 }
 
+/** Pulso contínuo no ponto verde — estilo “online” / disponível */
+@keyframes online-status-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(1.55);
+  }
+}
+
+.online-status-pulse {
+  animation: online-status-pulse 1.85s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .online-status-pulse {
+    animation: none;
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 1023px) {
+  .project-card-reveal {
+    opacity: 0;
+    transform: translate3d(0, 32px, 0);
+    animation: project-card-reveal 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  @keyframes project-card-reveal {
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #fafafa; }
-::-webkit-scrollbar-thumb { background: #d0d0d0; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #a0a0a0; }
+::-webkit-scrollbar-track { background: var(--background); }
+::-webkit-scrollbar-thumb { background: var(--figma-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--figma-muted); }

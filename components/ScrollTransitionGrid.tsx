@@ -4,13 +4,13 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 
 // ─── Card dimensions ──────────────────────────────────────────────────────────
-const CW  = 280;   // card width  (px)
-const CH  = 200;   // card height (px)
-const GAP = 20;    // grid gap    (px)
+const CW = 280; // card width  (px)
+const CH = 200; // card height (px)
+const GAP = 20; // grid gap    (px)
 
 // Half-steps used to place cards in the 2×2 grid
-const hx = CW / 2 + GAP / 2;  // 150
-const hy = CH / 2 + GAP / 2;  // 110
+const hx = CW / 2 + GAP / 2; // 150
+const hy = CH / 2 + GAP / 2; // 110
 
 // Grid center is offset +80px right of viewport center so the left text
 // column never overlaps the cards even at 1024px viewports.
@@ -19,10 +19,10 @@ const GCX = 80;
 // ── Final positions: 2×2 grid ─────────────────────────────────────────────────
 //   Coordinates are relative to the viewport center (0,0).
 const GRID: [number, number][] = [
-  [GCX - hx, -hy],   // top-left
-  [GCX + hx, -hy],   // top-right
-  [GCX - hx,  hy],   // bottom-left
-  [GCX + hx,  hy],   // bottom-right
+  [GCX - hx, -hy], // top-left
+  [GCX + hx, -hy], // top-right
+  [GCX - hx, hy], // bottom-left
+  [GCX + hx, hy], // bottom-right
 ];
 
 // ── Initial positions: stacked on right side ───────────────────────────────────
@@ -30,17 +30,33 @@ const GRID: [number, number][] = [
 //   Scale < 1 makes them appear "behind" the viewport plane.
 const STACK = [
   { x: GCX + 218, y: -82, s: 0.62, r: -2.5, z: 4 },
-  { x: GCX + 246, y: -24, s: 0.60, r:  3.0, z: 3 },
-  { x: GCX + 215, y:  33, s: 0.58, r: -1.8, z: 2 },
-  { x: GCX + 236, y:  84, s: 0.56, r:  2.2, z: 1 },
+  { x: GCX + 246, y: -24, s: 0.6, r: 3.0, z: 3 },
+  { x: GCX + 215, y: 33, s: 0.58, r: -1.8, z: 2 },
+  { x: GCX + 236, y: 84, s: 0.56, r: 2.2, z: 1 },
 ];
 
 // ── Card content data ─────────────────────────────────────────────────────────
 const CARDS = [
-  { color: "from-slate-700  to-slate-900",   label: "Dashboard SaaS",  cat: "SaaS / Web App"   },
-  { color: "from-emerald-600 to-teal-700",   label: "Loja Online",     cat: "E-Commerce"       },
-  { color: "from-violet-600  to-purple-800", label: "App Mobile",      cat: "iOS & Android"    },
-  { color: "from-orange-500  to-rose-600",   label: "Plataforma B2B",  cat: "Web App / B2B"    },
+  {
+    color: "from-slate-700  to-slate-900",
+    label: "Dashboard SaaS",
+    cat: "SaaS / Web App",
+  },
+  {
+    color: "from-emerald-600 to-teal-700",
+    label: "Loja Online",
+    cat: "E-Commerce",
+  },
+  {
+    color: "from-violet-600  to-purple-800",
+    label: "App Mobile",
+    cat: "iOS & Android",
+  },
+  {
+    color: "from-orange-500  to-rose-600",
+    label: "Plataforma B2B",
+    cat: "Web App / B2B",
+  },
 ] as const;
 
 // ─── EaseInOut helper (avoids importing from framer-motion internals) ─────────
@@ -49,30 +65,33 @@ const easeIO = (t: number): number =>
 
 // ─── Single animated card ─────────────────────────────────────────────────────
 interface CardProps {
-  card:     (typeof CARDS)[number];
-  progress: MotionValue<number>;            // eased 0 → 1
-  start:    (typeof STACK)[number];
-  end:      [number, number];
+  card: (typeof CARDS)[number];
+  progress: MotionValue<number>; // eased 0 → 1
+  start: (typeof STACK)[number];
+  end: [number, number];
 }
 
 function AnimCard({ card, progress, start, end }: CardProps) {
-  const x      = useTransform(progress, [0, 1], [start.x, end[0]]);
-  const y      = useTransform(progress, [0, 1], [start.y, end[1]]);
-  const scale  = useTransform(progress, [0, 1], [start.s, 1]);
+  const x = useTransform(progress, [0, 1], [start.x, end[0]]);
+  const y = useTransform(progress, [0, 1], [start.y, end[1]]);
+  const scale = useTransform(progress, [0, 1], [start.s, 1]);
   const rotate = useTransform(progress, [0, 1], [start.r, 0]);
 
   return (
     <motion.div
       style={{
-        position:   "absolute",
-        width:      CW,
-        height:     CH,
-        left:       "50%",
-        top:        "50%",
+        position: "absolute",
+        width: CW,
+        height: CH,
+        left: "50%",
+        top: "50%",
         marginLeft: -(CW / 2),
-        marginTop:  -(CH / 2),
-        x, y, scale, rotate,
-        zIndex:     start.z,
+        marginTop: -(CH / 2),
+        x,
+        y,
+        scale,
+        rotate,
+        zIndex: start.z,
         willChange: "transform",
       }}
       className="rounded-2xl overflow-hidden cursor-pointer"
@@ -84,12 +103,14 @@ function AnimCard({ card, progress, start, end }: CardProps) {
       initial={{ boxShadow: "0 12px 32px rgba(0,0,0,0.18)" }}
     >
       {/* ── Placeholder thumbnail — replace with next/image ───────────────── */}
-      <div className={`w-full h-full bg-gradient-to-br ${card.color} relative select-none`}>
+      <div
+        className={`w-full h-full bg-gradient-to-br ${card.color} relative select-none`}
+      >
         {/* Browser chrome */}
         <div className="absolute inset-x-0 top-0 h-7 bg-black/25 flex items-center px-3 gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-red-400/70"    />
+          <span className="w-2 h-2 rounded-full bg-red-400/70" />
           <span className="w-2 h-2 rounded-full bg-yellow-400/70" />
-          <span className="w-2 h-2 rounded-full bg-green-400/70"  />
+          <span className="w-2 h-2 rounded-full bg-green-400/70" />
           <div className="mx-auto h-3 w-24 rounded-full bg-white/20" />
         </div>
 
@@ -106,7 +127,9 @@ function AnimCard({ card, progress, start, end }: CardProps) {
 
         {/* Footer label */}
         <div className="absolute bottom-3 left-3 right-3">
-          <p className="text-[11px] font-semibold leading-tight text-white/90">{card.label}</p>
+          <p className="text-[11px] font-semibold leading-tight text-white/90">
+            {card.label}
+          </p>
           <p className="text-[10px] mt-0.5 text-white/40">{card.cat}</p>
         </div>
       </div>
@@ -125,16 +148,16 @@ export default function ScrollTransitionGrid() {
   });
 
   // Cards transition between scroll positions 0.15 → 0.75, then apply easing
-  const cardRaw     = useTransform(raw, [0.15, 0.75], [0, 1], { clamp: true });
-  const cardEased   = useTransform(cardRaw, easeIO);
+  const cardRaw = useTransform(raw, [0.15, 0.75], [0, 1], { clamp: true });
+  const cardEased = useTransform(cardRaw, easeIO);
 
   // Hero text: in at 0, out by 0.20
-  const heroOpacity = useTransform(raw, [0,    0.20], [1, 0]);
-  const heroSlide   = useTransform(raw, [0,    0.20], [0, -24]);
+  const heroOpacity = useTransform(raw, [0, 0.2], [1, 0]);
+  const heroSlide = useTransform(raw, [0, 0.2], [0, -24]);
 
   // Grid label: in at 0.70, fully visible by 0.88
-  const gridOpacity = useTransform(raw, [0.70, 0.88], [0, 1]);
-  const gridSlide   = useTransform(raw, [0.70, 0.88], [20, 0]);
+  const gridOpacity = useTransform(raw, [0.7, 0.88], [0, 1]);
+  const gridSlide = useTransform(raw, [0.7, 0.88], [20, 0]);
 
   // Scroll hint fades out immediately
   const hintOpacity = useTransform(raw, [0, 0.07], [1, 0]);
@@ -143,7 +166,6 @@ export default function ScrollTransitionGrid() {
     <div ref={ref} style={{ height: "300vh" }} className="relative">
       {/* ── Sticky viewport ─────────────────────────────────────────────────── */}
       <div className="sticky top-0 h-screen overflow-hidden bg-[#f5f5f3]">
-
         {/* ── Hero text column ────────────────────────────────────────────── */}
         <motion.div
           style={{ opacity: heroOpacity, y: heroSlide }}
@@ -164,7 +186,8 @@ export default function ScrollTransitionGrid() {
           </h1>
 
           <p className="mt-5 max-w-[220px] text-sm leading-relaxed text-gray-500">
-            Projetos reais construídos com tecnologia moderna e foco em resultados.
+            Projetos reais construídos com tecnologia moderna e foco em
+            resultados.
           </p>
 
           <motion.div
@@ -173,7 +196,11 @@ export default function ScrollTransitionGrid() {
           >
             <motion.span
               animate={{ y: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
             >
               ↓
             </motion.span>
@@ -224,7 +251,6 @@ export default function ScrollTransitionGrid() {
             <div key={i} className="h-1 w-1 rounded-full bg-gray-400" />
           ))}
         </motion.div>
-
       </div>
     </div>
   );

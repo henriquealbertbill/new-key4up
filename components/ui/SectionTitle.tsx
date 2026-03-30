@@ -30,7 +30,7 @@ export default function SectionTitle({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-          className="block text-[clamp(2.25rem,5.5vw,4rem)] font-medium leading-[1.05] tracking-[-0.034em] text-[#828282]"
+          className="block text-[clamp(2.25rem,5.5vw,4rem)] font-medium leading-[1.05] tracking-[-0.034em] text-figma-gray"
         >
           {line}
         </motion.div>
@@ -44,7 +44,7 @@ export default function SectionTitle({
           delay: ghostLines.length * 0.08,
           ease: [0.22, 1, 0.36, 1],
         }}
-        className="block text-[clamp(2.25rem,5.5vw,4rem)] font-medium leading-[1.05] tracking-[-0.034em] text-black"
+        className="block text-[clamp(2.25rem,5.5vw,4rem)] font-medium leading-[1.05] tracking-[-0.034em] text-foreground"
       >
         {solidLine}
       </motion.div>

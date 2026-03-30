@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Mail, Plus } from "lucide-react";
-import SectionTitle from "./ui/SectionTitle";
 
 const LinkedinIcon = ({ className }: { className?: string }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
@@ -30,121 +29,167 @@ const socialLinks = [
 
 export default function About() {
   return (
-    <section id="sobre" className="border-y border-[#dedede] bg-white py-24 sm:py-28">
+    <section
+      id="sobre"
+      className="border-y border-figma-border bg-card py-24 sm:py-28"
+    >
       <div className="mx-auto max-w-[1080px] px-4 sm:px-8 lg:px-11">
-        {/* Title */}
-        <div className="text-center mb-16">
-          <SectionTitle
-            ghostLines={["A criar experiências", "que resolvem"]}
-            solidLine="problemas reais."
-            align="center"
-          />
+        {/* Heading */}
+        <div className="mb-14 max-w-[760px] text-left sm:mb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="text-[clamp(2.25rem,5.5vw,4rem)] font-medium leading-[1.05] tracking-[-0.034em]"
+          >
+            <span className="text-figma-gray">A criar experiências</span>
+            <br />
+            <span className="text-foreground">
+              que resolvem problemas reais.
+            </span>
+          </motion.h2>
         </div>
 
         {/* Content grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
-          {/* Left — photo + info */}
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-5 lg:gap-16">
+          {/* Left — details + history */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-2 flex flex-col gap-4"
+            className="flex flex-col gap-6 lg:col-span-2"
           >
-            {/* Photo */}
-            <div className="relative rounded-2xl overflow-hidden aspect-[3/4] bg-gradient-to-br from-gray-700 to-gray-900 max-w-xs mx-auto lg:max-w-full">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-white/10 font-black text-8xl">B</div>
+            <div className="rounded-2xl border border-figma-border bg-background p-4 shadow-[0px_0.6px_0.6px_-1.1px_rgba(0,0,0,0.16),0px_2.3px_2.3px_-2.2px_rgba(0,0,0,0.13),0px_10px_10px_-3.3px_rgba(0,0,0,0.06)] dark:border-card-border dark:bg-card dark:shadow-none">
+              {/* Photo */}
+              <div className="relative mx-auto aspect-3/4 w-full max-w-[260px] overflow-hidden rounded-2xl bg-linear-to-br from-zinc-800 via-zinc-900 to-black lg:max-w-full">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_20%,rgba(255,255,255,0.2),transparent_45%),radial-gradient(circle_at_80%_75%,rgba(255,255,255,0.15),transparent_40%)]" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="select-none text-8xl font-black text-white/10">
+                    BS
+                  </div>
+                </div>
+                {/* Social badges overlay */}
+                <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-2">
+                  {socialLinks.map((s, index) => (
+                    <motion.a
+                      key={s.label}
+                      href={s.href}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{
+                        duration: 0.35,
+                        delay: 0.08 + index * 0.06,
+                      }}
+                      className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-black/50 backdrop-blur-md transition-colors hover:bg-black/70"
+                      aria-label={s.label}
+                    >
+                      <s.icon className="h-3.5 w-3.5 text-white" />
+                    </motion.a>
+                  ))}
+                </div>
               </div>
-              {/* Social badges overlay */}
-              <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
-                {socialLinks.map((s) => (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    className="w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center hover:bg-white transition-colors shadow-sm"
-                    aria-label={s.label}
-                  >
-                    <s.icon className="w-3.5 h-3.5 text-gray-800" />
-                  </a>
-                ))}
-              </div>
-            </div>
 
-            {/* Name */}
-            <div className="text-center lg:text-left">
-              <div className="font-bold text-gray-900 text-lg">Bruno Silva</div>
-              <div className="text-sm text-gray-500">Founder & Full-Stack Developer</div>
+              {/* Name */}
+              <div className="mt-4 text-center lg:text-left">
+                <p className="text-lg font-semibold tracking-[-0.02em] text-foreground">
+                  Henrique Albert
+                </p>
+                <p className="text-sm text-figma-muted">
+                  Founder & Full-Stack Developer
+                </p>
+              </div>
             </div>
 
             {/* Experience */}
             <div>
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-gray-400 dark:text-figma-gray">
                 O meu percurso
               </p>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2.5">
                 {experiences.map((exp, i) => (
-                  <div
+                  <motion.div
                     key={i}
-                    className="flex items-center justify-between bg-white border border-gray-100 rounded-full px-4 py-2 shadow-sm"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.35, delay: i * 0.06 }}
+                    className="flex items-center justify-between rounded-2xl border border-figma-border bg-background px-4 py-3 shadow-[0px_0.6px_0.6px_-1.1px_rgba(0,0,0,0.16),0px_2.3px_2.3px_-2.2px_rgba(0,0,0,0.13),0px_10px_10px_-3.3px_rgba(0,0,0,0.06)] dark:border-card-border dark:bg-card dark:shadow-none"
                   >
                     <div>
-                      <span className="text-sm font-semibold text-gray-900">{exp.company}</span>
-                      <span className="text-xs text-gray-400 ml-2">{exp.role}</span>
+                      <span className="text-sm font-semibold text-foreground">
+                        {exp.company}
+                      </span>
+                      <span className="ml-2 text-xs text-figma-muted">
+                        {exp.role}
+                      </span>
                     </div>
-                    <span className="text-xs text-gray-400 shrink-0">{exp.period}</span>
-                  </div>
+                    <span className="shrink-0 text-xs text-figma-muted">
+                      {exp.period}
+                    </span>
+                  </motion.div>
                 ))}
               </div>
-              <button className="mt-3 flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-900 transition-colors">
-                <Plus className="w-4 h-4" /> Ver tudo
+              <button
+                className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-figma-border bg-background px-3 py-1.5 text-sm text-figma-muted shadow-[0px_0.6px_0.6px_-1.1px_rgba(0,0,0,0.16),0px_2.3px_2.3px_-2.2px_rgba(0,0,0,0.13),0px_10px_10px_-3.3px_rgba(0,0,0,0.06)] transition-colors hover:text-foreground dark:border-card-border dark:bg-card dark:shadow-none"
+                type="button"
+                aria-label="Ver todo o percurso"
+              >
+                <Plus className="h-4 w-4" /> Ver tudo
               </button>
             </div>
           </motion.div>
 
-          {/* Right — text */}
+          {/* Right — philosophy */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-3 flex flex-col justify-center gap-6"
+            className="flex flex-col justify-center gap-6 lg:col-span-3"
           >
-            <p className="text-2xl font-semibold text-gray-900 leading-snug">
-              Sou o único por trás da Key4up — e isso é uma vantagem para ti.
-            </p>
-            <p className="text-gray-600 leading-relaxed text-base">
-              Não tens um gestor de conta, um designer separado ou um dev que nunca veste o projeto.
-              Tens{" "}
-              <strong className="text-gray-900">
-                uma pessoa que conhece o teu negócio de ponta a ponta
-              </strong>{" "}
-              e entrega com a{" "}
-              <strong className="text-gray-900">
-                mesma exigência de uma agência, mas sem a burocracia.
-              </strong>
-            </p>
-            <p className="text-gray-600 leading-relaxed text-base">
-              Comecei a programar por paixão e transformei isso numa carreira focada em criar
-              produtos digitais que realmente funcionam. Cada projeto é tratado como se fosse meu
-              próprio negócio.
-            </p>
-
-            {/* Signature SVG */}
-            <div className="pt-2">
-              <svg
-                viewBox="0 0 200 60"
-                className="h-12 w-auto text-gray-800"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M10,40 C20,10 40,50 55,30 C65,15 70,45 80,35 C90,25 95,45 110,30 C125,15 130,50 145,35 C155,25 160,45 175,35 C180,32 185,38 190,35" />
-                <path d="M10,50 L60,50" />
-              </svg>
-              <p className="text-xs text-gray-400 mt-1">Bruno Silva, Founder</p>
+            <div className="rounded-2xl border border-figma-border bg-background p-6 shadow-[0px_0.6px_0.6px_-1.1px_rgba(0,0,0,0.16),0px_2.3px_2.3px_-2.2px_rgba(0,0,0,0.13),0px_10px_10px_-3.3px_rgba(0,0,0,0.06)] dark:border-card-border dark:bg-card dark:shadow-none sm:p-7">
+              <p className="text-[1.35rem] font-semibold leading-snug tracking-[-0.02em] text-foreground sm:text-2xl">
+                Sou o único por trás da Key4up - e isso é uma vantagem para ti.
+              </p>
+              <p className="mt-5 text-base leading-relaxed text-figma-muted">
+                <strong className="font-semibold text-foreground">
+                  Transformo ideias em produtos digitais reais
+                </strong>{" "}
+                e foco-me em resultados de negócio, não em entregas vazias. Não
+                tens camadas de comunicação: falas diretamente com quem pensa,
+                desenha e desenvolve.
+              </p>
+              <p className="mt-4 text-base leading-relaxed text-figma-muted">
+                O meu objetivo é criar experiências que vendem, convertem e
+                escalam, mantendo a execução simples para ti. Cada detalhe é
+                desenhado para resolver um problema real, com clareza,
+                performance e consistência.
+              </p>
+              <p className="mt-4 text-base leading-relaxed text-figma-muted">
+                Trabalho com visão de parceiro - trato cada projeto como se
+                fosse parte da minha própria empresa e acompanho o crescimento
+                para além do lançamento.
+              </p>
+              <div className="pt-6">
+                <svg
+                  viewBox="0 0 200 60"
+                  className="h-12 w-auto text-zinc-800 dark:text-figma-muted"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M10,40 C20,10 40,50 55,30 C65,15 70,45 80,35 C90,25 95,45 110,30 C125,15 130,50 145,35 C155,25 160,45 175,35 C180,32 185,38 190,35" />
+                  <path d="M10,50 L60,50" />
+                </svg>
+                <p className="mt-1 text-xs text-figma-muted">
+                  Henrique Albert, Founder
+                </p>
+              </div>
             </div>
           </motion.div>
         </div>

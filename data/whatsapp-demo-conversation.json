@@ -1,0 +1,134 @@
+{
+  "steps": [
+    {
+      "type": "composer_typing",
+      "durationMs": 1450,
+      "preview": "Olá! tudo bem?",
+      "sendDelayMs": 420
+    },
+    {
+      "type": "message_text",
+      "from": "user",
+      "text": "Olá! tudo bem?",
+      "time": "14:02"
+    },
+    {
+      "type": "typing_indicator",
+      "from": "agent",
+      "durationMs": 1850
+    },
+    {
+      "type": "message_text",
+      "from": "agent",
+      "text": "Olá! Tudo otimo, e com você? ",
+      "time": "14:02"
+    },
+    {
+      "type": "typing_indicator",
+      "from": "agent",
+      "durationMs": 1850
+    },
+    {
+      "type": "message_text",
+      "from": "agent",
+      "text": "Me chamo Aline, como poss ajudar ?",
+      "time": "14:02"
+    },
+    {
+      "type": "composer_typing",
+      "durationMs": 2200,
+      "preview": "Tudo bem tbm Aline, eu passei na porta e vi que voces fazem a lavagem de chassi, gostaria de saber o valor ",
+      "sendDelayMs": 400
+    },
+    {
+      "type": "message_text",
+      "from": "user",
+      "text": "Tudo bem tbm Aline, eu passei na porta e vi que voces fazem a lavagem de chassi, gostaria de saber o valor ",
+      "time": "14:03"
+    },
+    {
+      "type": "typing_indicator",
+      "from": "agent",
+      "durationMs": 2100
+    },
+    {
+      "type": "message_text",
+      "from": "agent",
+      "text": "Fazemos sim, o valor depende do tamanho do carro, qual é o modelo do seu carro?",
+      "time": "14:03"
+    },
+
+    {
+      "type": "sending_photo_user",
+      "durationMs": 1800,
+      "sendDelayMs": 420
+    },
+    {
+      "type": "message_image",
+      "from": "user",
+      "image": "/images/jeep.JPG",
+      "alt": "Foto do carro enviada pelo cliente (simulação)",
+      "time": "14:03"
+    },
+    {
+      "type": "typing_indicator",
+      "from": "agent",
+      "durationMs": 2100
+    },
+    {
+      "type": "message_text",
+      "from": "agent",
+      "text": "certo, seu carro para ser um SUV, Jeep Compass, só um instante já lhe passo o valor",
+      "time": "14:03"
+    },
+
+    {
+      "type": "typing_indicator",
+      "from": "agent",
+      "durationMs": 2100
+    },
+    {
+      "type": "message_text",
+      "from": "agent",
+      "text": "o valor para lavagem de chassi do seu Jeep Compass é de R$ 180,00, está incluso a lavagem do chassi e proteção",
+      "time": "14:03"
+    },
+    {
+      "type": "typing_indicator",
+      "from": "agent",
+      "durationMs": 2100
+    },
+    {
+      "type": "message_text",
+      "from": "agent",
+      "text": "podemos fazer o serviço hoje mesmo, ou agendar para uma data futura?",
+      "time": "14:03"
+    },
+
+    {
+      "type": "recording_user",
+      "durationMs": 2600,
+      "sendDelayMs": 480
+    },
+    {
+      "type": "message_audio",
+      "from": "user",
+      "seconds": 8,
+      "time": "14:04",
+      "transcript": "Consigo levar o Jeep hoje à tarde pra fazer a lavagem do chassi?"
+    },
+    {
+      "type": "typing_indicator",
+      "from": "agent",
+      "durationMs": 1700
+    },
+    {
+      "type": "message_audio",
+      "from": "agent",
+      "seconds": 12,
+      "time": "14:05",
+      "senderLabel": "Aline",
+      "transcript": "Perfeito! Pode vir até às 18h. Qualquer coisa é só chamar aqui pelo WhatsApp."
+    }
+  ]
+}

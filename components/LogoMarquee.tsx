@@ -15,7 +15,7 @@ const logos = [
 
 export default function LogoMarquee() {
   return (
-    <section className="py-12 border-y border-gray-200 bg-white overflow-hidden">
+    <section className="py-12 overflow-hidden border-y border-figma-border bg-card">
       <div className="max-w-7xl mx-auto px-4 mb-6">
         <p className="text-center text-xs font-semibold text-gray-400 uppercase tracking-widest">
           Confiado por muitos
