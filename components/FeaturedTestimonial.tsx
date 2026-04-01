@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function FeaturedTestimonial() {
   return (
@@ -15,8 +16,9 @@ export default function FeaturedTestimonial() {
         >
           <blockquote className="mx-auto max-w-[780px] text-center">
             <p className="text-[clamp(1.25rem,2.8vw,1.75rem)] font-medium leading-[1.35] tracking-[-0.02em] text-foreground">
-              &ldquo;Trabalhar com a Key4up foi como ter um parceiro técnico que percebeu a nossa visão e
-              trouxe-a à vida de formas que nem imaginávamos.&rdquo;
+              &ldquo;Trabalhar com a Key4up foi como ter um parceiro técnico que
+              percebeu a nossa visão e trouxe-a à vida de formas que nem
+              imaginávamos.&rdquo;
             </p>
           </blockquote>
           <motion.div
@@ -26,11 +28,19 @@ export default function FeaturedTestimonial() {
             transition={{ duration: 0.45, delay: 0.12 }}
             className="mt-10 flex flex-col items-center gap-3"
           >
-            <div className="size-[38px] overflow-hidden rounded-full bg-gradient-to-br from-gray-600 to-gray-900 ring-2 ring-background" />
+            <Image
+              src="/images/peoples/daniel.png"
+              alt="Daniel Vilar"
+              width={48}
+              height={48}
+              className="rounded-full"
+            />
             <div className="text-center">
-              <p className="text-[15px] font-semibold tracking-[-0.01em] text-foreground">Maria Santos</p>
+              <p className="text-[15px] font-semibold tracking-[-0.01em] text-foreground">
+                Daniel Vilar
+              </p>
               <p className="mt-1 text-[13px] font-medium tracking-[-0.01em] text-figma-muted">
-                CEO, TechStartup Lisboa
+                CEO, DanPay
               </p>
             </div>
           </motion.div>

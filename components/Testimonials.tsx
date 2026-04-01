@@ -6,25 +6,22 @@ import type { TestimonialCard } from "@/components/ui/testimonials-columns-1";
 
 const testimonials: readonly TestimonialCard[] = [
   {
-    text: "Entregou o projeto em metade do tempo previsto. A qualidade do código é excecional e a comunicação foi impecável durante todo o processo.",
-    image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=120&h=120&fit=crop&crop=faces&q=80",
-    name: "João Ferreira",
-    role: "CTO, DataFlow",
+    text: "Trabalhar com a Key4up foi como ter um parceiro técnico que percebeu a nossa visão e trouxe-a à vida de formas que nem imaginávamos.",
+    image: "/images/peoples/daniel.png",
+    name: "Daniel Vilar",
+    role: "CEO, DanPay",
   },
   {
-    text: "A minha loja online triplicou as vendas após o redesign. Percebeu perfeitamente o que precisávamos sem termos de explicar tudo pormenorizadamente.",
-    image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=120&h=120&fit=crop&crop=faces&q=80",
-    name: "Ana Costa",
-    role: "Fundadora, ModaStore",
+    text: "A Key4Up, criou, desenhou e toma conta de todo meu ecommerce, desde a estrutura até o design e a funcionalidade. Tudo feito com muita qualidade e profissionalismo.",
+    image: "/images/peoples/natalia.png",
+    name: "Natália Mendes",
+    role: "Fundadora, Loja Offero",
   },
   {
-    text: "Profissionalismo absoluto. Cumpriu todos os prazos e ainda sugeriu melhorias que nós nem tínhamos pensado. Voltaremos a trabalhar juntos.",
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&h=120&fit=crop&crop=faces&q=80",
-    name: "Pedro Rodrigues",
-    role: "CEO, TechVentures",
+    text: "Nossos leads aumentaram em 300% após a criação da nossa landing page e a gestão do tráfego pago com a Key4Up. Eles criaram, desenharam e tomaram conta de todo meu ecommerce, desde a estrutura até o design e a funcionalidade. Tudo feito com muita qualidade e profissionalismo.",
+    image: "/images/peoples/leo.png",
+    name: "Leonardo Ulisbon",
+    role: "CEO, Duquesa Home",
   },
   {
     text: "Trabalhar convosco é ter a tranquilidade de que o trabalho é bem feito. Não preciso de microgerir — reportam tudo de forma proativa.",
@@ -41,11 +38,10 @@ const testimonials: readonly TestimonialCard[] = [
     role: "Fundador, FitApp",
   },
   {
-    text: "Por fim um parceiro técnico que percebe de negócio. As sugestões têm sempre em conta o impacto no utilizador final. Excelente trabalho.",
-    image:
-      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=120&h=120&fit=crop&crop=faces&q=80",
-    name: "Carla Oliveira",
-    role: "CMO, GrowthLab",
+    text: "O sistema que a Key4Up desenvolveu para a nossa empresa é o melhor que já tivemos. Ele é fácil de usar, e nos ajuda a gerir melhor o nosso negócio.",
+    image: "/images/peoples/gabriel.png",
+    name: "Gabriel",
+    role: "CEO, Co.Labore",
   },
   {
     text: "A nova área de cliente reduziu tickets de suporte em cerca de 40%. UX clara, integrações estáveis e entrega sem sobressaltos.",
